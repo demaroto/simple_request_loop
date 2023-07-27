@@ -1,0 +1,16 @@
+{
+  "name": "Request HTTP",
+  "version": "0.0.2",
+  "description": "make a loop request http",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Example: 'node times.js {URL} {times to call}' or 'node infinity.js {URL} {delay in seconds}'\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wildemar Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "process": "^0.11.10",
+    "request": "^2.88.2"
+  }
+}
