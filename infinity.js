@@ -35,22 +35,32 @@ makeRequest = async () => {
 async function initRequest(time_start, time_end) {
 
   console.log((time_end - time_start))
+  let calling = true;
   //If the last request was greater than the seconds delay
-  if ((time_end - time_start) > (time * 1000)) {
-      console.log({start: time_start})
-      await makeRequest()
-          .then(function (response) {
-            time1 = time_end
-            time2 = new Date();
-            console.log(response.now);
-            console.log({end: response.body});
-          initRequest(time1, time2);
-          }).catch(function (error) {
-            
-            console.log(error)
-          });
+  
+  console.log({start: time_start})
+  await makeRequest()
+      .then(function (response) {
+        time1 = time_end
+        console.log(response.now);
+        console.log({end: response.body});
+        console.log(calling)
+        while(calling) {
+          time2 = new Date();
+          if ((time2 - time1) > (time * 1000)) {
+            calling = false;
+            console.log(calling)
+            initRequest(time1, time2);
+          }else{
+            calling = true;
+          }
+        }
+      }).catch(function (error) {
 
-  }
+        console.log(error)
+      });
+
+  
 }
 
 //url
